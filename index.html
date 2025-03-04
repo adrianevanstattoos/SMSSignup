@@ -3,69 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up for SMS</title>
+    <title>Sign Up</title>
 </head>
 <body>
-    <h1>Join Our SMS List</h1>
+    <!-- Embed Klaviyo Signup Form
+    <div class="klaviyo-form-XXuGwY"></div>-->
+    <div id="klaviyo-form-XXuGwY"></div>
 
-    <!-- Custom Form for collecting phone numbers -->
-    <form id="sms-form">
-        <label for="phone-number">Enter your phone number:</label>
-        <input type="tel" id="phone-number" name="phone_number" required placeholder="123-456-7890">
-        <button type="submit">Sign Up</button>
-    </form>
-
-    <!-- Success message -->
-    <p id="response-message" style="display:none; color: green;">Thank you for signing up!</p>
-
-    <script>
-        // Handle form submission
-        document.getElementById('sms-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const phoneNumber = document.getElementById('phone-number').value;
-
-            if (phoneNumber) {
-                // Make API call to Klaviyo
-                submitPhoneNumber(phoneNumber);
-            }
-        });
-
-        function submitPhoneNumber(phoneNumber) {
-            const apiKey = pk_b0182600a4ffdb655dffa9f6e800780b3b; // Your Klaviyo Private API Key
-            const listId = VJ826z; // The List ID for your SMS subscribers
-
-            const data = {
-                profiles: [
-                    {
-                        phone_number: phoneNumber,
-                    },
-                ],
-            };
-
-            // Make the API request using Fetch API
-            fetch(`https://a.klaviyo.com/api/v1/list/${listId}/members`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Klaviyo-API-Key ${apiKey}`,
-                },
-                body: JSON.stringify(data),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Show success message
-                    document.getElementById('response-message').style.display = 'block';
-                } else {
-                    alert('There was an error, please try again.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error, please try again.');
-            });
-        }
+    <script type="text/javascript">
+        var _klavier = _klavier || [];
+        _klavier.push(['account', 'YOUR_ACCOUNT_ID']);
+        _klavier.push(['form', 'YOUR_FORM_ID']);
     </script>
-
+   <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VANUeN'></script>
 </body>
 </html>
